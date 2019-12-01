@@ -13,7 +13,7 @@ const getUser = async ( condition = {} ) => {
         }
     };
     const {user_id, display_name, points} = user;
-    const rank = await userModel.countDocuments(countCondition);
+    const rank = await userModel.countDocuments(countCondition).then(r => r+1);
     return {
         user_id,
         display_name,

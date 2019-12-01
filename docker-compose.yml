@@ -1,0 +1,26 @@
+version: "3"
+services:
+  mongo:
+    image: mongo
+    container_name: gjg_mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - "./db-init:/docker-entrypoint-initdb.d"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME:test
+      - MONGO_INITDB_ROOT_PASSWORD:test
+      - MONGO_INITDB_DATABASE:test
+
+  backend:
+    image: gjg-backend
+    container_name: gjg_backend_challenge
+    build:
+      context: .
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+    restart: always

@@ -10,7 +10,7 @@ const submit = async (score) => {
             points: score_worth
         }
     };
-    return await userModel.update(condition, operation);
+    return await userModel.updateOne(condition, operation);
 };
 
 module.exports = {submit};
