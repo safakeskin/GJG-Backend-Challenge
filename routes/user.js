@@ -14,16 +14,6 @@ router.post('/create', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
-    try {
-        const users = await getUser({});
-        res.status(200).send(users);
-    }catch (e) {
-        console.log(e);
-        res.status(500).send("Error occurred, contact with your service provider!");
-    }
-});
-
 router.get('/profile', async (req, res) => {
     const {query: {user_id, display_name}} = req;
 

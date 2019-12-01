@@ -8,13 +8,13 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     user_id: {type: String, required: true, unique: true},
     display_name: {type: String, required: true, unique: true},
-    points: Number,
-    rank: Number
+    points: {type: Number},
+    rank: {type: Number},
+    country: {type: String}
 });
+
+UserSchema.index({user_id: 1, points: -1});
 
 const UserModel = mongoose.model('user', UserSchema);
 
-module.exports = {
-    Model: UserModel,
-    Schema: UserSchema
-};
+module.exports = UserModel;
