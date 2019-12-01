@@ -7,15 +7,17 @@ const getUser = async ( condition = {} ) => {
     if (!user){
         throw new Error("User not found!");
     }
-    console.log(user);
     const countCondition = {
         "points": {
             "$gt": user.points
         }
     };
+    const {user_id, display_name, points} = user;
     const rank = await userModel.countDocuments(countCondition);
     return {
-        ...user,
+        user_id,
+        display_name,
+        points,
         rank
     };
 };

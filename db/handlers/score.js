@@ -6,7 +6,7 @@ const submit = async (score) => {
         "user_id": user_id
     };
     const operation = {
-        "$inc": {
+        $inc: {
             points: score_worth
         }
     };
