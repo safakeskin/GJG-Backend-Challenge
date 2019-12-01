@@ -4,9 +4,9 @@ const router = express.Router();
 const {getUser, createUser} = require("../db/handlers/user");
 
 router.post('/create', async (req, res) => {
-    const {body: {user_id, display_name}} = req;
+    const {body: {user_id, display_name, country}} = req;
     try{
-        const user = await createUser({user_id, display_name});
+        const user = await createUser({user_id, display_name, country});
         res.status(200).send(user);
     }catch (e) {
         console.log(e);

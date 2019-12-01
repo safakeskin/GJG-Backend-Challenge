@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     display_name: {type: String, required: true, unique: true},
     points: {type: Number},
     rank: {type: Number},
-    country: {type: String}
+    country: {type: String, default: 'tr'}
 });
 
 UserSchema.index({user_id: 1, points: -1});
