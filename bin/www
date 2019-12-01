@@ -72,8 +72,7 @@ const connectDb = () => {
     // console.log(process.env);
     // const connectStr = `mongodb://${DB_URL}:${DB_PORT}/${DB_NAME}`;
     const connectStr = `mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_URL}:${DB_PORT}/${DB_NAME}`;
-    console.log("Connected!");
-    return mongoose.connect(connectStr, {useNewUrlParser: true});
+    return mongoose.connect(connectStr, {useNewUrlParser: true, useUnifiedTopology: true});
 };
 
 const initServer = () => {
